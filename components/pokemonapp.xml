@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="PokemonApp" extends="Scene">
+<script uri="pokemonapp.brs" type="text/brightscript" />
+    <children>
+		<Poster 
+			id="backgroundPoster"
+			uri="pkg:/images/pokemon-bg.jpg"
+			loadDisplayMode="scaleToFill"
+			width="1280" 
+      		height="720" 
+		/>
+    	<Label 
+			id="titleLabel"
+      		width="1280" 
+      		height="720" 
+      		horizAlign="center"
+      		vertAlign="top"
+			color = "#c8e8e8"
+      	/>
+		<Rectangle
+			id="testRectangle"
+			color="#000000"
+			opacity="0.80"
+			width="1280"
+			height="285"
+			translation="[0,220]"
+		/>
+		<Label 
+			id="descriptionLabel"
+      		width="1280" 
+      		height="720" 
+      		horizAlign="center"
+      		vertAlign="center"
+			color = "#f02435"
+      	/>
+    </children>
+</component>
