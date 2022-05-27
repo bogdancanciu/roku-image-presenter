@@ -17,6 +17,14 @@
       		vertAlign="top"
 			color = "#c8e8e8"
       	/>
+		<Rectangle
+			id="testRectangle"
+			color="#000000"
+			opacity="0.80"
+			width="1280"
+			height="285"
+			translation="[0,220]"
+		/>
 		<Label 
 			id="descriptionLabel"
       		width="1280" 
