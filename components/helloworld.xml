@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<component name="HelloWorld" extends="Scene"> 
+<component name="HelloWorld" extends="Scene">
+<script uri="helloworld.brs" type="text/brightscript" />
     <children>
-    	<Label id="myLabel" 
-      		text="Hello World!"
+		<Poster 
+			id="backgroundPoster"
+			uri="pkg:/images/pokemon-bg.jpg"
+			loadDisplayMode="scaleToFill"
+			width="1280" 
+      		height="720" 
+		/>
+    	<Label 
+			id="titleLabel"
+      		width="1280" 
+      		height="720" 
+      		horizAlign="center"
+      		vertAlign="top"
+			color = "#c8e8e8"
+      	/>
+		<Label 
+			id="descriptionLabel"
       		width="1280" 
       		height="720" 
       		horizAlign="center"
       		vertAlign="center"
+			color = "#f02435"
       	/>
     </children>
 </component>
