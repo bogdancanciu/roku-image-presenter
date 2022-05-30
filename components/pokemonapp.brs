@@ -19,8 +19,8 @@ function getRequest(uri as String)
     m.requestContent.control = "RUN"
 end function
 
-function printContent()
-    for i=0 to m.requestContent.getRequestContent.getChildCount()-1
-        print m.requestContent.getRequestContent.getChild(i)
+function printContent(event as Object)
+    for i=0 to event.getData().getChildCount()-1
+        print event.getData().getChild(i)
     end for
 end function
