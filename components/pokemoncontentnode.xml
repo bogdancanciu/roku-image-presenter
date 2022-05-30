@@ -1,0 +1,10 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+<component name="PokemonContentNode" extends="ContentNode">
+    <interface>
+        <field id="pokemonID" type="int" />
+        <field id="pokemonTitle" type="string" />
+        <field id="pokemonDescription" type="string" />
+        <field id="pokemonBGImage" type="uri" />
+        <field id="pokemonImage" type="uri" />
+    </interface>
+</component>

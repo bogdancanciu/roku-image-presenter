@@ -3,6 +3,6 @@
 <script uri="requesttask.brs" type="text/brightscript" />
     <interface>
         <field id="serveruri" type="uri" />
-        <field id="getRequestContent" type="string" />
+        <field id="getRequestContent" type="node" />
     </interface>
 </component>

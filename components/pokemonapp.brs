@@ -20,8 +20,7 @@ function getRequest(uri as String)
 end function
 
 function printContent()
-    requestAsJson = ParseJson(m.requestContent.getRequestContent)
-    for each pokemon in requestAsJson:
-        print pokemon
+    for i=0 to m.requestContent.getRequestContent.getChildCount()-1
+        print m.requestContent.getRequestContent.getChild(i)
     end for
 end function
