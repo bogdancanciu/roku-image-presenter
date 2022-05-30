@@ -20,7 +20,8 @@ function getRequest(uri as String)
 end function
 
 function printContent(event as Object)
-    for i=0 to event.getData().getChildCount()-1
-        print event.getData().getChild(i)
+    serverContent = event.getData()
+    for i=0 to serverContent.getChildCount()-1
+        print serverContent.getChild(i)
     end for
 end function

@@ -3,17 +3,21 @@ function init()
 end function
 
 function getcontent()
-    content = createObject("roSGNode", "ContentNode")
     getRequest = createObject("roUrlTransfer")
     getRequest.setUrl(m.top.serveruri)
     response = ParseJson(getRequest.GetToString())
-    for each pokemon in response:
-        currentPokemon = content.createChild("PokemonContentNode")
+    createNodes(response)
+end function
+
+function createNodes(serverContent as object)
+    m.content = createObject("roSGNode", "ContentNode")
+    for each pokemon in serverContent:
+        currentPokemon = m.content.createChild("PokemonContentNode")
         currentPokemon.pokemonID = pokemon.id
         currentPokemon.pokemonTitle = pokemon.title
         currentPokemon.pokemonDescription = pokemon.description
         currentPokemon.pokemonBGImage = pokemon.image_1080_url
         currentPokemon.pokemonImage = pokemon.url
     end for
-    m.top.getRequestContent = content
+    m.top.getRequestContent = m.content
 end function
