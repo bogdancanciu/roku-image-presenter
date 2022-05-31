@@ -15,6 +15,7 @@
       		height="720" 
       		horizAlign="center"
       		vertAlign="top"
+			translation = "[0,20]"
 			color = "#c8e8e8"
       	/>
 		<Rectangle
@@ -31,6 +32,7 @@
       		height="720" 
       		horizAlign="center"
       		vertAlign="center"
+			wrap = "true"
 			color = "#f02435"
       	/>
 		<RowList 
