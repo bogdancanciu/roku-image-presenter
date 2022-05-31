@@ -1,6 +1,7 @@
 function init()
     m.descriptionLabel = m.top.FindNode("descriptionLabel")
     m.titleLabel = m.top.FindNode("titleLabel")
+    m.pokeList = m.top.FindNode("PokemonRowList")
     initText()
     getRequest("http://my-json-server.typicode.com/bogdanterzea/pokemon-server/photos")
 end function
@@ -14,14 +15,19 @@ end function
 
 function getRequest(uri as String)
     m.requestContent = CreateObject("roSGnode","RequestTask")
-    m.requestContent.observeField("getRequestContent","printContent")
+    m.requestContent.observeField("getRequestContent","saveContent")
     m.requestContent.serveruri = uri
     m.requestContent.control = "RUN"
 end function
 
-function printContent(event as Object)
+function saveContent(event as Object)
     serverContent = event.getData()
-    for i=0 to serverContent.getChildCount()-1
-        print serverContent.getChild(i)
-    end for
+    createPokeList(serverContent)
+end function
+
+function createPokeList(listRow as Object)
+    newPokemonContent = CreateObject("roSGNode", "ContentNode")
+    newPokemonContent.appendChild(listRow)
+    m.pokeList.content = newPokemonContent
+    m.pokeList.setFocus(true)
 end function
