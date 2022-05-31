@@ -33,5 +33,15 @@
       		vertAlign="center"
 			color = "#f02435"
       	/>
+		<RowList 
+			id = "PokemonRowList" 
+			translation = "[ 10, 500 ]"
+			numRows = "1" 
+			itemSize = "[ 2800, 240 ]" 
+			rowItemSize = "[ [280, 160] ]"
+			rowItemSpacing = "[[30,0]]" 
+			showRowLabel = "[ true ]" 
+			rowFocusAnimationStyle = "fixedFocus"
+		/>
     </children>
 </component>
