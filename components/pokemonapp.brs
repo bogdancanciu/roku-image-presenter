@@ -30,4 +30,25 @@ function createPokeList(listRow as Object)
     newPokemonContent.appendChild(listRow)
     m.pokeList.content = newPokemonContent
     m.pokeList.setFocus(true)
+    observePokeList()
+end function
+
+function observePokeList()
+    m.pokeList.observeField("rowItemFocused","parsePokeData")
+end function
+
+function parsePokeData(event as Object)
+    data = event.GetData()
+    titleFromData = m.pokeList.content.getChild(0).getChild(data[1]).title
+    descriptionFromData = m.pokeList.content.getChild(0).getChild(data[1]).pokemonDescription
+    updateTitle(titleFromData)
+    updateDescription(descriptionFromData)
+end function
+
+function updateTitle(title as String)
+    m.titleLabel.text = title
+end function
+
+function updateDescription(description as String)
+    m.descriptionLabel.text = description
 end function
