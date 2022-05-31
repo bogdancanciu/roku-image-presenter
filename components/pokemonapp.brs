@@ -39,12 +39,10 @@ function parsePokeData(event as Object)
     data = event.GetData()
     pokemonIndex = data[1]
     selectedPokemon = m.pokeList.content.getChild(0).getChild(pokemonIndex)
-    titleFromData = selectedPokemon.title
-    descriptionFromData = selectedPokemon.pokemonDescription
-    updateText(titleFromData, descriptionFromData)
+    updateText(selectedPokemon)
 end function
 
-function updateText(title as String, description as String)
-    m.titleLabel.text = title
-    m.descriptionLabel.text = description
+function updateText(selectedPokemon as Object)
+    m.titleLabel.text = selectedPokemon.title
+    m.descriptionLabel.text = selectedPokemon.pokemonDescription
 end function
