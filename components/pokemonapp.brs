@@ -15,12 +15,12 @@ end function
 
 function getRequest(uri as String)
     m.requestContent = CreateObject("roSGnode","RequestTask")
-    m.requestContent.observeField("getRequestContent","printContent")
+    m.requestContent.observeField("getRequestContent","saveContent")
     m.requestContent.serveruri = uri
     m.requestContent.control = "RUN"
 end function
 
-function printContent(event as Object)
+function saveContent(event as Object)
     serverContent = event.getData()
     createPokeList(serverContent)
 end function

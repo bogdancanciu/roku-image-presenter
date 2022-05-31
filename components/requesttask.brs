@@ -14,12 +14,10 @@ function createNodes(serverContent as object)
     for each pokemon in serverContent:
         currentPokemon = content.createChild("PokemonContentNode")
         currentPokemon.pokemonID = pokemon.id
-        currentPokemon.pokemonTitle = pokemon.title
         currentPokemon.title = pokemon.title
         currentPokemon.HDPosterUrl = pokemon.url
         currentPokemon.pokemonDescription = pokemon.description
         currentPokemon.pokemonBGImage = pokemon.image_1080_url
-        currentPokemon.pokemonImage = pokemon.url
     end for
     m.top.getRequestContent = content
 end function
