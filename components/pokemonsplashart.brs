@@ -11,7 +11,6 @@ end function
 function onKeyEvent(key as String, press as Boolean) as boolean
     if press
         if(key = "back")
-            print key
             parent = m.top.getparent()
             parent.removeChildIndex(parent.getChildCount()-1)
             rowList = parent.findNode("PokemonRowList")
