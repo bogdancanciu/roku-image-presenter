@@ -27,6 +27,7 @@ end function
 
 function observePokeList()
     m.pokeList.observeField("rowItemFocused","onPokemonFocus")
+    m.pokeList.observeField("rowItemSelected", "onPokemonSelect")
 end function
 
 function onPokemonFocus(event as Object)
@@ -36,7 +37,22 @@ function onPokemonFocus(event as Object)
     updateText(selectedPokemon)
 end function
 
+function onPokemonSelect(event as Object)
+    data = event.GetData()
+    pokemonIndex = data[1]
+    selectedPokemon = m.pokeList.content.getChild(0).getChild(pokemonIndex)
+    pokemonSplashArt = CreateObject("roSGNode", "PokemonSplashArt")
+    createPokemonSplashArt(pokemonSplashArt, selectedPokemon)
+end function
+
 function updateText(selectedPokemon as Object)
     m.titleLabel.text = selectedPokemon.title
     m.descriptionLabel.text = selectedPokemon.pokemonDescription
+end function
+
+function createPokemonSplashArt(splashArtObject as Object, selectedPokemon as dynamic)
+    splashArtObject.contenturi = selectedPokemon.pokemonBGImage
+    m.pokeList.setFocus(false)
+    m.top.appendChild(splashArtObject)
+    splashArtObject.setFocus(true)
 end function
