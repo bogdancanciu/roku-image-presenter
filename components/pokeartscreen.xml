@@ -1,9 +1,9 @@
 <?xml version = "1.0" encoding = "utf-8" ?>
-<component name="PokemonSplashArt" extends="Group">
+<component name="PokeArtScreen" extends="Group">
 <interface>
     <field id="contenturi" type="string" />
 </interface>
-<script uri="pokemonsplashart.brs" type="text/brightscript" />
+<script uri="pokeartscreen.brs" type="text/brightscript" />
 <children>
 		<Poster 
 			id="pokemonPoster"

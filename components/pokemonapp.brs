@@ -43,7 +43,7 @@ function onPokemonSelect(event as Object)
     focusedItemIndex = 1
     pokemonIndex = data[focusedItemIndex]
     selectedPokemon = m.pokeList.content.getChild(0).getChild(pokemonIndex)
-    pokemonSplashArt = CreateObject("roSGNode", "PokemonSplashArt")
+    pokemonSplashArt = CreateObject("roSGNode", "PokeArtScreen")
     createPokemonSplashArt(pokemonSplashArt, selectedPokemon)
 end function
 
