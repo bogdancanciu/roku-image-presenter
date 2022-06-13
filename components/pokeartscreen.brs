@@ -11,11 +11,15 @@ end function
 function onKeyEvent(key as String, press as Boolean) as boolean
     if press
         if(key = "back")
-            parent = m.top.getparent()
-            parent.removeChildIndex(parent.getChildCount()-1)
-            rowList = parent.findNode("PokemonRowList")
-            rowList.setFocus(true)
+            closeArtScreen()
         end if
     end if
     return true
+end function
+
+function closeArtScreen()
+    parent = m.top.getparent()
+    parent.removeChildIndex(parent.getChildCount()-1)
+    rowList = parent.findNode("PokemonRowList")
+    rowList.setFocus(true)
 end function
