@@ -1,4 +1,6 @@
 function init()
+    m.focusedItemIndex = 1
+    m.firstChild = 0
     m.descriptionLabel = m.top.FindNode("descriptionLabel")
     m.titleLabel = m.top.FindNode("titleLabel")
     m.pokeList = m.top.FindNode("PokemonRowList")
@@ -27,16 +29,34 @@ end function
 
 function observePokeList()
     m.pokeList.observeField("rowItemFocused","onPokemonFocus")
+    m.pokeList.observeField("rowItemSelected", "onPokemonSelect")
 end function
 
 function onPokemonFocus(event as Object)
     data = event.GetData()
-    pokemonIndex = data[1]
-    selectedPokemon = m.pokeList.content.getChild(0).getChild(pokemonIndex)
+    currentRow = m.pokeList.content.getChild(m.firstChild)
+    pokemonIndex = data[m.focusedItemIndex]
+    selectedPokemon = currentRow.getChild(pokemonIndex)
     updateText(selectedPokemon)
+end function
+
+function onPokemonSelect(event as Object)
+    data = event.GetData()
+    currentRow = m.pokeList.content.getChild(m.firstChild)
+    pokemonIndex = data[m.focusedItemIndex]
+    selectedPokemon = currentRow.getChild(pokemonIndex)
+    pokemonSplashArt = CreateObject("roSGNode", "PokeArtScreen")
+    createPokemonSplashArt(pokemonSplashArt, selectedPokemon)
 end function
 
 function updateText(selectedPokemon as Object)
     m.titleLabel.text = selectedPokemon.title
     m.descriptionLabel.text = selectedPokemon.pokemonDescription
+end function
+
+function createPokemonSplashArt(splashArtObject as Object, selectedPokemon as dynamic)
+    splashArtObject.contenturi = selectedPokemon.pokemonBGImage
+    m.pokeList.setFocus(false)
+    m.top.appendChild(splashArtObject)
+    splashArtObject.setFocus(true)
 end function
