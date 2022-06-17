@@ -45,5 +45,15 @@
 			showRowLabel = "[ true ]" 
 			rowFocusAnimationStyle = "fixedFocus"
 		/>
+		<RowList 
+			id = "StarsList" 
+			translation = "[ 480, 50 ]"
+			numRows = "1" 
+			itemSize = "[ 2800, 240 ]" 
+			rowItemSize = "[ [40, 40] ]"
+			rowItemSpacing = "[[30,0]]" 
+			showRowLabel = "[ true ]" 
+			rowFocusAnimationStyle = "fixedFocus"
+		/>
     </children>
 </component>

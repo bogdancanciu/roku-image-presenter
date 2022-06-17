@@ -4,6 +4,7 @@ function init()
     m.descriptionLabel = m.top.FindNode("descriptionLabel")
     m.titleLabel = m.top.FindNode("titleLabel")
     m.pokeList = m.top.FindNode("PokemonRowList")
+    m.pokeRating = m.top.FindNode("StarsList")
     getRequest("http://my-json-server.typicode.com/bogdanterzea/pokemon-server/photos")
 end function
 
@@ -24,6 +25,7 @@ function createPokeList(listRow as Object)
     newPokemonContent.appendChild(listRow)
     m.pokeList.content = newPokemonContent
     m.pokeList.setFocus(true)
+    displayPokemonRating()
     observePokeList()
 end function
 
@@ -60,3 +62,8 @@ function createPokemonSplashArt(splashArtObject as Object, selectedPokemon as dy
     m.top.appendChild(splashArtObject)
     splashArtObject.setFocus(true)
 end function
+
+function displayPokemonRating()
+    rating = CreateObject("roSGNode","StarRatingContentNode")
+    m.pokeRating.content = rating
+end function 

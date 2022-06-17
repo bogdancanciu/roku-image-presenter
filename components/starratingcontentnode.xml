@@ -1,0 +1,17 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+<component name="StarRatingContentNode" extends="ContentNode">
+    <children>
+        <ContentNode>
+            <ContentNode 
+                HDPosterUrl = "pkg:/images/rate-star.png" />
+            <ContentNode 
+                HDPosterUrl = "pkg:/images/rate-star.png" />
+            <ContentNode 
+                HDPosterUrl = "pkg:/images/rate-star.png" />
+            <ContentNode 
+                HDPosterUrl = "pkg:/images/rate-star.png" />
+            <ContentNode 
+                HDPosterUrl = "pkg:/images/rate-star.png" />
+        </ContentNode>
+    </children>
+</component>
