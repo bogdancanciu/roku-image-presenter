@@ -53,7 +53,7 @@
 			rowItemSize = "[ [40, 40] ]"
 			rowItemSpacing = "[[30,0]]" 
 			showRowLabel = "[ true ]" 
-			rowFocusAnimationStyle = "fixedFocus"
+			rowFocusAnimationStyle = "floatingFocus"
 		/>
     </children>
 </component>
