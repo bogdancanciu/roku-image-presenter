@@ -55,5 +55,15 @@
 			showRowLabel = "[ true ]" 
 			rowFocusAnimationStyle = "floatingFocus"
 		/>
+		<Label 
+			id="ratingLabel"
+      		width="1280" 
+      		height="720" 
+      		horizAlign="center"
+      		vertAlign="top"
+			translation = "[0,150]"
+			visible = "false"
+			color = "#eb07cc"
+      	/>
     </children>
 </component>

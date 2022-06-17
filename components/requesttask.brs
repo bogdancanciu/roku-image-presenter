@@ -6,7 +6,13 @@ function getcontent()
     getRequest = createObject("roUrlTransfer")
     getRequest.setUrl(m.top.serveruri)
     response = ParseJson(getRequest.GetToString())
+    readRegistry()
     createNodes(response)
+end function
+
+function readRegistry()
+    ec=CreateObject("roRegistrySection","PokemonApp")
+    print ec.ReadMulti(0)
 end function
 
 function createNodes(serverContent as object)
