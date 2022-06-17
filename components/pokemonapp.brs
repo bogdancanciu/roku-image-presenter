@@ -7,6 +7,7 @@ function init()
     m.titleLabel = m.top.FindNode("titleLabel")
     m.pokeList = m.top.FindNode("PokemonRowList")
     m.pokeRatingList = m.top.FindNode("StarsList")
+    m.registry = CreateObject("roRegistrySection","PokemonAppRegistry")
     getRequest("http://my-json-server.typicode.com/bogdanterzea/pokemon-server/photos")
 end function
 
@@ -46,6 +47,8 @@ function onRatingSelect(event as Object)
     currentRow = m.pokeList.content.getChild(m.firstChild)
     selectedPokemon = currentRow.getChild(m.focusedPokemonIndex)
     selectedPokemon.pokemonRating = ratingScore
+    m.registry.Write(selectedPokemon.pokemonID.ToStr(),ratingScore.ToStr())
+    m.registry.Flush()
     m.pokeList.setFocus(true)
 end function
 
@@ -54,6 +57,7 @@ function onPokemonFocus(event as Object)
     currentRow = m.pokeList.content.getChild(m.firstChild)
     m.focusedPokemonIndex = data[m.focusedItemIndex]
     selectedPokemon = currentRow.getChild(m.focusedPokemonIndex)
+
     if(selectedPokemon.pokemonRating = 0)
         m.ratingLabel.visible = false
     else
