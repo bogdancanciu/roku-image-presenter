@@ -4,5 +4,6 @@
         <field id="pokemonID" type="int" />
         <field id="pokemonDescription" type="string" />
         <field id="pokemonBGImage" type="uri" />
+        <field id="pokemonRating" type="int" />
     </interface>
 </component>

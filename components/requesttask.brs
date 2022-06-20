@@ -1,5 +1,6 @@
 function init()
     m.top.functionName = "getcontent"
+    m.registry = CreateObject("roRegistrySection","PokemonAppRegistry")
 end function
 
 function getcontent()
@@ -18,6 +19,8 @@ function createNodes(serverContent as object)
         currentPokemon.HDPosterUrl = pokemon.url
         currentPokemon.pokemonDescription = pokemon.description
         currentPokemon.pokemonBGImage = pokemon.image_1080_url
+        registryValue = m.registry.Read(currentPokemon.pokemonID.ToStr()).ToInt()
+        currentPokemon.pokemonRating = registryValue
     end for
     m.top.getRequestContent = content
 end function
