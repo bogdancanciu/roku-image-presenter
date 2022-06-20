@@ -3,7 +3,6 @@ function init()
     m.firstChild = 0
     m.focusedPokemonIndex = 0
     m.descriptionLabel = m.top.FindNode("descriptionLabel")
-    m.ratingLabel = m.top.FindNode("ratingLabel")
     m.titleLabel = m.top.FindNode("titleLabel")
     m.pokeList = m.top.FindNode("PokemonRowList")
     m.pokeRatingList = m.top.FindNode("StarsList")
@@ -61,14 +60,19 @@ function onPokemonFocus(event as Object)
     currentRow = m.pokeList.content.getChild(m.firstChild)
     m.focusedPokemonIndex = data[m.focusedItemIndex]
     selectedPokemon = currentRow.getChild(m.focusedPokemonIndex)
-
-    if(selectedPokemon.pokemonRating = 0)
-        m.ratingLabel.visible = false
-    else
-        m.ratingLabel.visible = true
-        m.ratingLabel.text = substitute("Current pokemon rating is {0}", selectedPokemon.pokemonRating.ToStr())
-    end if
+    displayPokemonRatingLabel(selectedPokemon.pokemonRating)
     updateText(selectedPokemon)
+end function
+
+function displayPokemonRatingLabel(ratingValue as Integer)
+    ratingLabel = m.top.FindNode("ratingLabel")
+
+    if(ratingValue = 0)
+        ratingLabel.visible = false
+    else
+        ratingLabel.visible = true
+        ratingLabel.text = substitute("Current pokemon rating is {0}", ratingValue.ToStr())
+    end if
 end function
 
 function onPokemonSelect(event as Object)
