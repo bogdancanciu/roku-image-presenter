@@ -6,6 +6,7 @@ function init()
     m.titleLabel = m.top.FindNode("titleLabel")
     m.pokeList = m.top.FindNode("PokemonRowList")
     m.pokeRatingList = m.top.FindNode("StarsList")
+    m.ratingLabel = m.top.FindNode("ratingLabel")
     getRequest("http://my-json-server.typicode.com/bogdanterzea/pokemon-server/photos")
 end function
 
@@ -65,13 +66,11 @@ function onPokemonFocus(event as Object)
 end function
 
 function displayPokemonRatingLabel(ratingValue as Integer)
-    ratingLabel = m.top.FindNode("ratingLabel")
-
     if(ratingValue = 0)
-        ratingLabel.visible = false
+        m.ratingLabel.visible = false
     else
-        ratingLabel.visible = true
-        ratingLabel.text = substitute("Current pokemon rating is {0}", ratingValue.ToStr())
+        m.ratingLabel.visible = true
+        m.ratingLabel.text = substitute("Current pokemon rating is {0}", ratingValue.ToStr())
     end if
 end function
 
@@ -90,6 +89,7 @@ end function
 
 function createPokemonSplashArt(splashArtObject as Object, selectedPokemon as dynamic)
     splashArtObject.contenturi = selectedPokemon.pokemonBGImage
+    splashArtObject.pokemonratinglabel = m.ratingLabel
     m.pokeList.setFocus(false)
     m.top.appendChild(splashArtObject)
     splashArtObject.setFocus(true)

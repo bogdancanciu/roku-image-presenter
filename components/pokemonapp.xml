@@ -63,7 +63,7 @@
       		vertAlign="top"
 			translation = "[0,150]"
 			visible = "false"
-			color = "#eb07cc"
+			color = "#fffb1c"
       	/>
     </children>
 </component>

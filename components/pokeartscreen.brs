@@ -1,11 +1,19 @@
 function init()
+    m.ratingLabel = m.top.findNode("artScreenRatingLabel")
+    m.pokemonSplashArtPoster = m.top.findNode("pokemonPoster") 
     m.top.observeField("contenturi","updatePoster")
-    m.pokemonSplashArtPoster = m.top.findNode("pokemonPoster")
+    m.top.observeField("pokemonratinglabel", "updateRatingLabel")
 end function
 
 function updatePoster(event as Object)
     data = event.getData()
     m.pokemonSplashArtPoster.uri = data
+end function
+
+function updateRatingLabel(event as Object)
+    data = event.getData()
+    m.ratingLabel.text = data.text
+    m.ratingLabel.visible = data.visible
 end function
 
 function onKeyEvent(key as String, press as Boolean) as boolean
