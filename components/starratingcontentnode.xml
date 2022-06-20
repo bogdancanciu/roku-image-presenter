@@ -1,17 +1,7 @@
 <?xml version = "1.0" encoding = "utf-8" ?>
 <component name="StarRatingContentNode" extends="ContentNode">
+<script uri="starratingcontentnode.brs" type="text/brightscript" />
     <children>
-        <ContentNode>
-            <ContentNode 
-                HDPosterUrl = "pkg:/images/rate-star.png" />
-            <ContentNode 
-                HDPosterUrl = "pkg:/images/rate-star.png" />
-            <ContentNode 
-                HDPosterUrl = "pkg:/images/rate-star.png" />
-            <ContentNode 
-                HDPosterUrl = "pkg:/images/rate-star.png" />
-            <ContentNode 
-                HDPosterUrl = "pkg:/images/rate-star.png" />
-        </ContentNode>
+        <ContentNode id="rowNode" />
     </children>
 </component>
