@@ -104,12 +104,12 @@ end function
 function defineFocus() as integer
     currentRow = m.pokeList.content.getChild(m.firstChild)
     selectedPokemon = currentRow.getChild(m.focusedPokemonIndex)
+    currentPokemonRating = 0
 
-    if(selectedPokemon.pokemonRating = 0)
-        return 0
-    else
-        return selectedPokemon.pokemonRating - 1
+    if(selectedPokemon.pokemonRating > 0)
+        currentPokemonRating = selectedPokemon.pokemonRating - 1
     end if
+    return currentPokemonRating
 end function
 
 function onKeyEvent(key as String, press as Boolean) as boolean
