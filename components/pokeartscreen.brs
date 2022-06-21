@@ -6,30 +6,35 @@ function init()
     m.top.observeField("contenturi","updatePoster")
     m.top.observeField("pokemonratinglabel", "updateRatingLabel")
     getRequest("https://my-json-server.typicode.com/bogdanterzea/pokemon-server/videos")
+    observePlayButton()
 end function
 
 
 function observePlayButton()
-    print "..."
-    print m.playButton
     m.playButton.observeField("buttonSelected","onPlayButtonClick")
 end function
 
 function onPlayButtonClick()
-    print "clicked"
+    m.videoComponent = CreateObject("roSGNode","VideoComponent")
+    m.videoComponent.videoContent = m.videoContent
+    m.top.appendChild(m.videoComponent)
+    m.videoComponent.setFocus(true)
+end function
+
+function onVideoComponentUpdate(event as Object)
+    print event.getData()
 end function
 
 function getRequest(uri as String)
-    m.requestContent = CreateObject("roSGnode","RequestVideoTask")
-    m.requestContent.observeField("getRequestContent","saveRequestContent")
-    m.requestContent.serveruri = uri
-    m.requestContent.control = "RUN"
+    requestContent = CreateObject("roSGnode","RequestVideoTask")
+    requestContent.observeField("getRequestContent","saveRequestContent")
+    requestContent.serveruri = uri
+    requestContent.control = "RUN"
 end function
 
 function saveRequestContent(event as Object)
-    videoContent = event.getData().getChild(m.firstChild)
-    updateButton(videoContent.title)
-    observePlayButton()
+    m.videoContent = event.getData().getChild(m.firstChild)
+    updateButton(m.videoContent.title)
 end function
 
 function updateButton(buttonText as string)
@@ -52,8 +57,6 @@ function onKeyEvent(key as String, press as Boolean) as boolean
         if(key = "back")
             closeArtScreen()
         end if
-        print m.top.hasFocus()
-        print m.ratingLabel.hasFocus()
     end if
     return true
 end function
