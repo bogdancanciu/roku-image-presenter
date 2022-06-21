@@ -1,5 +1,5 @@
 <?xml version = "1.0" encoding = "utf-8" ?>
-<component name="PokeArtScreen" extends="Group">
+<component name="PokeArtScreen" extends="Group" initialFocus="playVideoButton">
 <interface>
     <field id="contenturi" type="string" />
 	<field id="pokemonratinglabel" type="node" />

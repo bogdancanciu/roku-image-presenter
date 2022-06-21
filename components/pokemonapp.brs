@@ -92,7 +92,6 @@ end function
 function createPokemonSplashArt(splashArtObject as Object, selectedPokemon as dynamic)
     splashArtObject.contenturi = selectedPokemon.pokemonBGImage
     splashArtObject.pokemonratinglabel = m.ratingLabel
-    m.pokeList.setFocus(false)
     m.top.appendChild(splashArtObject)
     splashArtObject.setFocus(true)
 end function
