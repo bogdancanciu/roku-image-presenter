@@ -61,8 +61,10 @@ function onPokemonFocus(event as Object)
     currentRow = m.pokeList.content.getChild(m.firstChild)
     m.focusedPokemonIndex = data[m.focusedItemIndex]
     selectedPokemon = currentRow.getChild(m.focusedPokemonIndex)
-    displayPokemonRatingLabel(selectedPokemon.pokemonRating)
-    updateText(selectedPokemon)
+    if(selectedPokemon <> invalid)
+        displayPokemonRatingLabel(selectedPokemon.pokemonRating)
+        updateText(selectedPokemon)
+    end if
 end function
 
 function displayPokemonRatingLabel(ratingValue as Integer)
