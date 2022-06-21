@@ -10,6 +10,7 @@ end function
 function updateVideoContent(event as Object)
     m.video.content = event.getData()
     m.video.control = "play"
+    observeVideoState()
 end function
 
 function closeVideoScreen()
@@ -18,6 +19,17 @@ function closeVideoScreen()
     parent.removeChildIndex(lastChild)
     playButton = parent.findNode("playVideoButton")
     playButton.setFocus(true)
+end function
+
+function observeVideoState()
+    m.video.observeField("state","onVideoFinish")
+end function
+
+function onVideoFinish(event as Object)
+    data = event.getData()
+    if(data = "finished")
+        closeVideoScreen()
+    end if
 end function
 
 function onKeyEvent(key as String, press as Boolean) as boolean

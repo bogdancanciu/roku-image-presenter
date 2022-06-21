@@ -1,5 +1,5 @@
 <?xml version = "1.0" encoding = "utf-8" ?>
-<component name="VideoComponent" extends="Group">
+<component name="VideoComponent" extends="Group" initialFocus="serverVideo">
 <script uri="videocomponent.brs" type="text/brightscript" />
 <interface>
 	<field id="videoContent" type="node" />
