@@ -1,0 +1,8 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+<component name="RequestVideoTask" extends="Task">
+<script uri="requestvideotask.brs" type="text/brightscript" />
+    <interface>
+        <field id="serveruri" type="uri" />
+        <field id="getRequestContent" type="node" />
+    </interface>
+</component>

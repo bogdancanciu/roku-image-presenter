@@ -18,9 +18,13 @@
       		height="720" 
       		horizAlign="center"
       		vertAlign="top"
-			translation = "[0,250]"
+			translation = "[0,15]"
 			visible = "false"
 			color = "#fffb1c"
       	/>
+		<Button
+			id="playVideoButton"
+			translation = "[490,320]"
+		/>
 </children>
 </component>
