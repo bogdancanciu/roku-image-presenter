@@ -14,6 +14,7 @@ function updateVideoContent(event as Object)
 end function
 
 function closeVideoScreen()
+    m.video.control = "stop"
     parent = m.top.getparent()
     lastChild = parent.getChildCount()-1
     parent.removeChildIndex(lastChild)

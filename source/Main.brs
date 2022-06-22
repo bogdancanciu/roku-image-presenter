@@ -1,4 +1,4 @@
-sub Main()
+sub main()
     print "in showChannelSGScreen"
     screen = CreateObject("roSGScreen")
     m.port = CreateObject("roMessagePort")
