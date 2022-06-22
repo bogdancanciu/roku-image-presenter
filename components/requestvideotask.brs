@@ -6,7 +6,6 @@ end function
 function execute()
     getRequest = createObject("roUrlTransfer")
     getRequest.setUrl(m.top.serveruri)
-    print getRequest.getUrl()
     getRequest.SetCertificatesFile("common:/certs/ca-bundle.crt")
     getRequest.InitClientCertificates()
     response = ParseJson(getRequest.GetToString())
