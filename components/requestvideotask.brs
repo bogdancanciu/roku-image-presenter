@@ -1,9 +1,9 @@
 function init()
-    m.top.functionName = "getcontent"
+    m.top.functionName = "execute"
     m.firstResult = 0
 end function
 
-function getcontent()
+function execute()
     getRequest = createObject("roUrlTransfer")
     getRequest.setUrl(m.top.serveruri)
     print getRequest.getUrl()

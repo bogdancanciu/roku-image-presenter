@@ -1,9 +1,9 @@
 function init()
-    m.top.functionName = "getcontent"
+    m.top.functionName = "execute"
     m.registry = CreateObject("roRegistrySection","PokemonAppRegistry")
 end function
 
-function getcontent()
+function execute()
     getRequest = createObject("roUrlTransfer")
     getRequest.setUrl(m.top.serveruri)
     response = ParseJson(getRequest.GetToString())
