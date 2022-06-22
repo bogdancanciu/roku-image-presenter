@@ -6,7 +6,6 @@ function init()
     m.top.observeField("contenturi","updatePoster")
     m.top.observeField("pokemonratinglabel", "updateRatingLabel")
     getVideoData("https://my-json-server.typicode.com/bogdanterzea/pokemon-server/videos")
-    observePlayButton()
 end function
 
 
@@ -35,6 +34,7 @@ end function
 function saveRequestContent(event as Object)
     m.videoContent = event.getData().getChild(m.firstChild)
     updateButton(m.videoContent.title)
+    observePlayButton()
 end function
 
 function updateButton(buttonText as string)
