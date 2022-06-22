@@ -22,10 +22,10 @@ function closeVideoScreen()
 end function
 
 function observeVideoState()
-    m.video.observeField("state","onVideoFinish")
+    m.video.observeField("state","onVideoStateChange")
 end function
 
-function onVideoFinish(event as Object)
+function onVideoStateChange(event as Object)
     data = event.getData()
     if(data = "finished")
         closeVideoScreen()
