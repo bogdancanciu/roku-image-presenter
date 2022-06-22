@@ -5,7 +5,7 @@ function init()
     m.firstChild = 0
     m.top.observeField("contenturi","updatePoster")
     m.top.observeField("pokemonratinglabel", "updateRatingLabel")
-    getRequest("https://my-json-server.typicode.com/bogdanterzea/pokemon-server/videos")
+    getVideoData("https://my-json-server.typicode.com/bogdanterzea/pokemon-server/videos")
     observePlayButton()
 end function
 
@@ -25,7 +25,7 @@ function onVideoComponentUpdate(event as Object)
     print event.getData()
 end function
 
-function getRequest(uri as String)
+function getVideoData(uri as String)
     requestContent = CreateObject("roSGnode","RequestVideoTask")
     requestContent.observeField("getRequestContent","saveRequestContent")
     requestContent.serveruri = uri
