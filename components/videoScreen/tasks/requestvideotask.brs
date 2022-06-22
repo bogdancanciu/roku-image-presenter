@@ -1,6 +1,6 @@
 function init()
-    m.top.functionName = "execute"
     m.firstResult = 0
+    m.top.functionName = "execute"
 end function
 
 function execute()
@@ -9,10 +9,10 @@ function execute()
     getRequest.SetCertificatesFile("common:/certs/ca-bundle.crt")
     getRequest.InitClientCertificates()
     response = ParseJson(getRequest.GetToString())
-    createVideoNode(response)
+    m.top.getRequestContent = createVideoNode(response)
 end function
 
-function createVideoNode(serverContent as object)
+function createVideoNode(serverContent as Object) as Object
     content = createObject("roSGNode", "ContentNode")
     videoData = serverContent[m.firstResult]
     content.id = videoData.id
@@ -20,5 +20,5 @@ function createVideoNode(serverContent as object)
     content.url = videoData.stream.url
     content.streamformat = videoData.stream.format
     content.HDPosterUrl = videoData.poster
-    m.top.getRequestContent = content
+    return content
 end function

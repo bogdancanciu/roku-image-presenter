@@ -2,8 +2,8 @@
 <component name="PokemonContentNode" extends="ContentNode">
     <interface>
         <field id="pokemonID" type="int" />
-        <field id="pokemonDescription" type="string" />
-        <field id="pokemonBGImage" type="uri" />
         <field id="pokemonRating" type="int" />
+        <field id="pokemonBGImage" type="uri" />
+        <field id="pokemonDescription" type="string" />
     </interface>
 </component>

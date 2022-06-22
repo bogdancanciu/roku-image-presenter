@@ -1,6 +1,7 @@
 function init()
-    observeContentField()
     m.video = m.top.findNode("serverVideo")
+
+    observeContentField()
 end function
 
 function observeContentField()
@@ -13,30 +14,23 @@ function updateVideoContent(event as Object)
     observeVideoState()
 end function
 
-function closeVideoScreen()
-    m.video.control = "stop"
-    parent = m.top.getparent()
-    lastChild = parent.getChildCount()-1
-    parent.removeChildIndex(lastChild)
-    playButton = parent.findNode("playVideoButton")
-    playButton.setFocus(true)
-end function
-
 function observeVideoState()
     m.video.observeField("state","onVideoStateChange")
 end function
 
 function onVideoStateChange(event as Object)
     data = event.getData()
-    if(data = "finished")
+
+    if data = "finished"
         closeVideoScreen()
     end if
 end function
 
 function onKeyEvent(key as String, press as Boolean) as boolean
     if press
-        if(key = "back")
-            closeVideoScreen()
+        if key = "back"
+            m.video.control = "stop"
+            restoreTo("playVideoButton")
         end if
     end if
     return true

@@ -1,6 +1,7 @@
 <?xml version = "1.0" encoding = "utf-8" ?>
 <component name="StarRatingContentNode" extends="ContentNode">
-<script uri="starratingcontentnode.brs" type="text/brightscript" />
+    <script uri="starratingcontentnode.brs" type="text/brightscript" />
+
     <children>
         <ContentNode id="rowNode" />
     </children>
