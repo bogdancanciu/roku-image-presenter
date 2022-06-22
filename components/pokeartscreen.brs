@@ -20,10 +20,6 @@ function onPlayButtonClick()
     m.videoComponent.setFocus(true)
 end function
 
-function onVideoComponentUpdate(event as Object)
-    print event.getData()
-end function
-
 function getVideoData(uri as String)
     requestContent = CreateObject("roSGnode","RequestVideoTask")
     requestContent.observeField("getRequestContent","saveRequestContent")
