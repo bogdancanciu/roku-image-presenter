@@ -1,17 +1,19 @@
 function init()
-    m.focusedItemIndex = 1
     m.firstChild = 0
-    m.focusedPokemonIndex = 0
-    m.descriptionLabel = m.top.FindNode("descriptionLabel")
+    m.focusedItemIndex = 1
+    m.focusedPokemonIndex = m.firstChild
+
     m.titleLabel = m.top.FindNode("titleLabel")
     m.pokeList = m.top.FindNode("PokemonRowList")
-    m.pokeRatingList = m.top.FindNode("StarsList")
     m.ratingLabel = m.top.FindNode("ratingLabel")
-    getRequest("http://my-json-server.typicode.com/bogdanterzea/pokemon-server/photos")
+    m.pokeRatingList = m.top.FindNode("StarsList")
+    m.descriptionLabel = m.top.FindNode("descriptionLabel")
+
+    getPokemonList("http://my-json-server.typicode.com/bogdanterzea/pokemon-server/photos")
 end function
 
-function getRequest(uri as String)
-    m.requestContent = CreateObject("roSGnode","RequestTask")
+function getPokemonList(uri as String)
+    m.requestContent = CreateObject("roSGnode","RequestPokemonTask")
     m.requestContent.observeField("getRequestContent","saveContent")
     m.requestContent.serveruri = uri
     m.requestContent.control = "RUN"
@@ -22,13 +24,19 @@ function saveContent(event as Object)
     createPokeList(serverContent)
 end function
 
-function createPokeList(listRow as Object)
+function createPokeList(listContent as Object)
     newPokemonContent = CreateObject("roSGNode", "ContentNode")
-    newPokemonContent.appendChild(listRow)
+    newPokemonContent.appendChild(listContent)
     m.pokeList.content = newPokemonContent
     m.pokeList.setFocus(true)
     displayPokemonRating()
     observePokeList()
+end function
+
+function displayPokemonRating()
+    rating = CreateObject("roSGNode","StarRatingContentNode")
+    m.pokeRatingList.content = rating
+    observeRatingList()
 end function
 
 function observePokeList()
@@ -40,13 +48,32 @@ function observeRatingList()
     m.pokeRatingList.observeField("rowItemSelected", "onRatingSelect")
 end function
 
+function onPokemonFocus(event as Object)
+    data = event.GetData()
+    currentRow = m.pokeList.content.getChild(m.firstChild)
+    m.focusedPokemonIndex = data[m.focusedItemIndex]
+    focusedPokemon = currentRow.getChild(m.focusedPokemonIndex)
+
+    if focusedPokemon <> invalid
+        displayPokemonRatingLabel(focusedPokemon.pokemonRating)
+        updateText(focusedPokemon)
+    end if
+end function
+
+function onPokemonSelect(event as Object)
+    data = event.GetData()
+    currentRow = m.pokeList.content.getChild(m.firstChild)
+    selectedPokemon = currentRow.getChild(m.focusedPokemonIndex)
+    createPokemonArtScreen(selectedPokemon)
+end function
+
 function onRatingSelect(event as Object)
     data = event.getData()
     ratingScore = data[m.focusedItemIndex] + 1
     currentRow = m.pokeList.content.getChild(m.firstChild)
-    selectedPokemon = currentRow.getChild(m.focusedPokemonIndex)
-    selectedPokemon.pokemonRating = ratingScore
-    writeRegistry(selectedPokemon.pokemonID.ToStr(),ratingScore.ToStr())
+    focusedPokemon = currentRow.getChild(m.focusedPokemonIndex)
+    focusedPokemon.pokemonRating = ratingScore
+    writeRegistry(focusedPokemon.pokemonID.ToStr(),ratingScore.ToStr())
     m.pokeList.setFocus(true)
 end function
 
@@ -56,72 +83,51 @@ function writeRegistry(key as String, value as String)
     registry.Flush()
 end function
 
-function onPokemonFocus(event as Object)
-    data = event.GetData()
-    currentRow = m.pokeList.content.getChild(m.firstChild)
-    m.focusedPokemonIndex = data[m.focusedItemIndex]
-    focusedPokemon = currentRow.getChild(m.focusedPokemonIndex)
-    if(focusedPokemon <> invalid)
-        displayPokemonRatingLabel(focusedPokemon.pokemonRating)
-        updateText(focusedPokemon)
-    end if
+function updateText(focusedPokemon as Object)
+    m.titleLabel.text = focusedPokemon.title
+    m.descriptionLabel.text = focusedPokemon.pokemonDescription
 end function
 
 function displayPokemonRatingLabel(ratingValue as Integer)
-    if(ratingValue = 0)
-        m.ratingLabel.visible = false
-    else
-        m.ratingLabel.visible = true
+    visibility = false
+
+    if ratingValue <> 0
+        visibility = true
         m.ratingLabel.text = substitute("Current pokemon rating is {0}", ratingValue.ToStr())
     end if
+
+    m.ratingLabel.visible = visibility
 end function
 
-function onPokemonSelect(event as Object)
-    data = event.GetData()
+function createPokemonArtScreen(selectedPokemon as Dynamic)
+    pokemonArtScreen = CreateObject("roSGNode", "PokeArtScreen")
+    pokemonArtScreen.contenturi = selectedPokemon.pokemonBGImage
+    pokemonArtScreen.pokemonratinglabel = m.ratingLabel
+    m.top.appendChild(pokemonArtScreen)
+    pokemonArtScreen.setFocus(true)
+end function
+
+function defineFocus() as Integer
     currentRow = m.pokeList.content.getChild(m.firstChild)
-    selectedPokemon = currentRow.getChild(m.focusedPokemonIndex)
-    pokemonSplashArt = CreateObject("roSGNode", "PokeArtScreen")
-    createPokemonSplashArt(pokemonSplashArt, selectedPokemon)
-end function
-
-function updateText(selectedPokemon as Object)
-    m.titleLabel.text = selectedPokemon.title
-    m.descriptionLabel.text = selectedPokemon.pokemonDescription
-end function
-
-function createPokemonSplashArt(splashArtObject as Object, selectedPokemon as dynamic)
-    splashArtObject.contenturi = selectedPokemon.pokemonBGImage
-    splashArtObject.pokemonratinglabel = m.ratingLabel
-    m.top.appendChild(splashArtObject)
-    splashArtObject.setFocus(true)
-end function
-
-function displayPokemonRating()
-    rating = CreateObject("roSGNode","StarRatingContentNode")
-    m.pokeRatingList.content = rating
-    observeRatingList()
-end function 
-
-function defineFocus() as integer
-    currentRow = m.pokeList.content.getChild(m.firstChild)
-    selectedPokemon = currentRow.getChild(m.focusedPokemonIndex)
+    focusedPokemon = currentRow.getChild(m.focusedPokemonIndex)
     currentPokemonRating = 0
 
-    if(selectedPokemon.pokemonRating > 0)
-        currentPokemonRating = selectedPokemon.pokemonRating - 1
+    if focusedPokemon.pokemonRating > 0
+        currentPokemonRating = focusedPokemon.pokemonRating - 1
     end if
+
     return currentPokemonRating
 end function
 
 function onKeyEvent(key as String, press as Boolean) as boolean
     if press
-        if(key = "up" AND m.pokeList.hasFocus())
+        if key = "up" and m.pokeList.hasFocus()
             m.pokeRatingList.setFocus(true)
             m.pokeRatingList.jumpToRowItem = [0, defineFocus()]
-        end if
-        if(key = "down" AND m.pokeRatingList.hasFocus())
+        else if key = "down" and m.pokeRatingList.hasFocus()
             m.pokeList.setFocus(true)
         end if
     end if
+
     return true
 end function
