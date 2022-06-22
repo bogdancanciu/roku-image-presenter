@@ -28,7 +28,7 @@ function getVideoData(uri as String)
 end function
 
 function saveRequestContent(event as Object)
-    m.videoContent = event.getData().getChild(m.firstChild)
+    m.videoContent = event.getData()
     updateButton(m.videoContent.title)
     observePlayButton()
 end function
