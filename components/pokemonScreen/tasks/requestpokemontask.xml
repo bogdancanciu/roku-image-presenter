@@ -1,0 +1,9 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+<component name="RequestPokemonTask" extends="Task">
+    <script uri="requestpokemontask.brs" type="text/brightscript" />
+    
+    <interface>
+        <field id="serveruri" type="uri" />
+        <field id="getRequestContent" type="node" />
+    </interface>
+</component>

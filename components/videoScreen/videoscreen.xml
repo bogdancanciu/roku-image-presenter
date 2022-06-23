@@ -1,0 +1,13 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+<component name="VideoScreen" extends="Group" initialFocus="serverVideo">
+	<script uri="videoscreen.brs" type="text/brightscript" />
+	<script uri="navigationhelper.brs" type="text/brightscript" />
+
+	<interface>
+		<field id="videoContent" type="node" />
+	</interface>
+
+	<children>
+			<Video id="serverVideo" />
+	</children>
+</component>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <component name="PokemonApp" extends="Scene">
-<script uri="pokemonapp.brs" type="text/brightscript" />
+	<script uri="pokemonapp.brs" type="text/brightscript" />
+	
     <children>
 		<Poster 
 			id="backgroundPoster"

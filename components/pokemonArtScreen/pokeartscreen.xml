@@ -1,0 +1,33 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+<component name="PokeArtScreen" extends="Group" initialFocus="playVideoButton">
+	<script uri="pokeartscreen.brs" type="text/brightscript" />
+	<script uri="navigationhelper.brs" type="text/brightscript" />
+
+	<interface>
+		<field id="contenturi" type="string" />
+		<field id="pokemonratinglabel" type="node" />
+	</interface>
+
+	<children>
+		<Poster 
+			id="pokemonPoster"
+			loadDisplayMode="scaleToFill"
+			width="1280" 
+			height="720" 
+		/>
+		<Label 
+			id="artScreenRatingLabel"
+			width="1280" 
+			height="720" 
+			horizAlign="center"
+			vertAlign="top"
+			translation = "[0,15]"
+			visible = "false"
+			color = "#fffb1c"
+		/>
+		<Button
+			id="playVideoButton"
+			translation = "[490,320]"
+		/>
+	</children>
+</component>
