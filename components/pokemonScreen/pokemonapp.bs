@@ -1,3 +1,5 @@
+import "Constants.bs"
+
 function init()
     m.firstChild = 0
     m.focusedItemIndex = 1
@@ -17,7 +19,13 @@ function getPokemonList(uri as String)
     m.requestContent.observeField("getRequestContent","saveContent")
     m.requestContent.serveruri = uri
     m.requestContent.control = "RUN"
+
+    testConstantsNamespace()
 end function
+
+sub testConstantsNamespace()
+    print Constants.get("firstConstant")
+end sub
 
 function saveContent(event as Object)
     serverContent = event.getData()
