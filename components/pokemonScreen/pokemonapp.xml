@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <component name="PokemonApp" extends="Scene">
 	<script uri="pokemonapp.bs" type="text/brightscript" />
+
+	<interface>
+		<field id="lastFocusedChild" type="node" />
+	</interface>
+
     <children>
 		<Poster 
 			id="backgroundPoster"

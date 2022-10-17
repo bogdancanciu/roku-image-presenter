@@ -1,0 +1,35 @@
+import "NavigationOptions.bs"
+
+class NavigationManager
+    private options as NavigationOptions
+
+    sub new(options = {} as Object)
+        m.options = options
+    end sub
+
+    function getOpts() as NavigationOptions
+        return m.options
+    end function
+
+    sub navigate(screenName as String, args as Object)
+        childScreen = CreateObject("roSGNode", screenName)
+        childScreen.update(args)
+
+        if args.Lookup("parentScreen") <> invalid
+            parent = args.parentScreen
+            parent.lastFocusedChild = parent.focusedChild
+
+            parent.appendChild(childScreen)
+            childScreen.setFocus(true)
+        end if
+    end sub
+
+    sub navigateBack(currentScreen as Object)
+        parent = currentScreen.parentScreen
+
+        if parent <> invalid
+            parent.removeChild(currentScreen)
+            parent.lastFocusedChild.setFocus(true)
+        end if
+    end sub
+end class
