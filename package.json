@@ -6,5 +6,11 @@
   },
   "license": "UNLICENSED",
   "author": "Bogdan C",
-  "private": true
+  "private": true,
+  "scripts": {
+    "deploy": "roku-deploy deployAndSignPackage"
+  },
+  "dependencies": {
+    "roku-deploy": "^3.9.2"
+  }
 }
