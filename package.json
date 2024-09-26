@@ -1,0 +1,16 @@
+{
+  "name": "roku-image-presenter",
+  "version": "1.0.0",
+  "devDependencies": {
+    "brighterscript": "^0.60.0"
+  },
+  "license": "UNLICENSED",
+  "author": "Bogdan C",
+  "private": true,
+  "scripts": {
+    "deploy": "roku-deploy deployAndSignPackage"
+  },
+  "dependencies": {
+    "roku-deploy": "^3.9.2"
+  }
+}

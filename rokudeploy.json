@@ -1,0 +1,15 @@
+{
+    "rootDir": "./out/package/",
+    "files": [
+        "source/**/*",
+        "components/**/*",
+        "images/**/*",
+        "manifest"
+    ],
+    "outDir": "./deployer",
+    "host": "192.168.10.142",
+    "username": "rokudev",
+    "password": "rokudev",
+    "signingPassword": "IxFjDUj/L8GSumrNm4oY2A==",
+    "devId": "22ae0dd609afb07850b465a634ec64d1aece6d34"
+}

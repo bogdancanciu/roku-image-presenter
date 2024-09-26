@@ -1,11 +1,12 @@
 <?xml version = "1.0" encoding = "utf-8" ?>
 <component name="PokeArtScreen" extends="Group" initialFocus="playVideoButton">
-	<script uri="pokeartscreen.brs" type="text/brightscript" />
+	<script uri="pokeartscreen.bs" type="text/brightscript" />
 	<script uri="navigationhelper.brs" type="text/brightscript" />
 
 	<interface>
 		<field id="contenturi" type="string" />
 		<field id="pokemonratinglabel" type="node" />
+		<field id="parentScreen" type="node" />
 	</interface>
 
 	<children>

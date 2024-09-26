@@ -22,7 +22,7 @@ function onVideoStateChange(event as Object)
     data = event.getData()
 
     if data = "finished"
-        closeVideoScreen()
+        restoreTo("playVideoButton")
     end if
 end function
 

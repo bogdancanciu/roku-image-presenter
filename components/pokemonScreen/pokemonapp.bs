@@ -1,3 +1,7 @@
+import "Constants.bs"
+import "pkg:/components/helpers/NavigationOptions.bs"
+import "pkg:/components/helpers/NavigationManager.bs"
+
 function init()
     m.firstChild = 0
     m.focusedItemIndex = 1
@@ -17,7 +21,18 @@ function getPokemonList(uri as String)
     m.requestContent.observeField("getRequestContent","saveContent")
     m.requestContent.serveruri = uri
     m.requestContent.control = "RUN"
+
+    testConstantsNamespace()
+    testClasses()
 end function
+
+sub testConstantsNamespace()
+    print Constants.get("firstConstant")
+end sub
+
+sub testClasses()
+    m.screenNavigationOptions = new NavigationOptions({ fromScreen: m.top })
+end sub
 
 function saveContent(event as Object)
     serverContent = event.getData()
@@ -64,7 +79,9 @@ function onPokemonSelect(event as Object)
     data = event.GetData()
     currentRow = m.pokeList.content.getChild(m.firstChild)
     selectedPokemon = currentRow.getChild(m.focusedPokemonIndex)
-    createPokemonArtScreen(selectedPokemon)
+
+    screenNavigationManager = new NavigationManager()
+    screenNavigationManager.navigate("PokeArtScreen", {parentScreen: m.top, contenturi: selectedPokemon.pokemonBGImage, pokemonratinglabel: m.ratingLabel})
 end function
 
 function onRatingSelect(event as Object)
@@ -97,14 +114,6 @@ function displayPokemonRatingLabel(ratingValue as Integer)
     end if
 
     m.ratingLabel.visible = visibility
-end function
-
-function createPokemonArtScreen(selectedPokemon as Dynamic)
-    pokemonArtScreen = CreateObject("roSGNode", "PokeArtScreen")
-    pokemonArtScreen.contenturi = selectedPokemon.pokemonBGImage
-    pokemonArtScreen.pokemonratinglabel = m.ratingLabel
-    m.top.appendChild(pokemonArtScreen)
-    pokemonArtScreen.setFocus(true)
 end function
 
 function defineFocus() as Integer

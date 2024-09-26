@@ -1,3 +1,5 @@
+import "pkg:/components/helpers/NavigationManager.bs"
+
 function init()
     m.firstChild = 0
 
@@ -7,6 +9,7 @@ function init()
 
     m.top.observeField("contenturi","updatePoster")
     m.top.observeField("pokemonratinglabel", "updateRatingLabel")
+    m.top.observeField("parentScreen", "onParentScreenChanged")
 
     getVideoData("https://my-json-server.typicode.com/bogdanterzea/pokemon-server/videos")
 end function
@@ -53,7 +56,8 @@ end function
 function onKeyEvent(key as String, press as Boolean) as boolean
     if press
         if(key = "back")
-            restoreTo("PokemonRowList")
+            screenNavigationManager = new NavigationManager()
+            screenNavigationManager.navigateBack(m.top)
         end if
     end if
     return true

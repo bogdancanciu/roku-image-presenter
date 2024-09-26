@@ -1,0 +1,11 @@
+class NavigationOptions
+    private options as Object
+
+    sub new(options as Object)
+        m.options = options
+    end sub
+
+    function get(optionKey as String) as Object
+        return m.options.Lookup(optionKey)
+    end function
+end class

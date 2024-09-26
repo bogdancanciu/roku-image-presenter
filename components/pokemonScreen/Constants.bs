@@ -1,0 +1,8 @@
+namespace Constants
+    function get(key as String) as Dynamic
+        constantsDictionary = {
+            firstConstant: "firstConstantValue"
+        }
+        return constantsDictionary.Lookup(key)
+    end function
+end namespace
